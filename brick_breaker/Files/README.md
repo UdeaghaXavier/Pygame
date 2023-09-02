@@ -1,5 +1,5 @@
 - Perequisites:
-  - Pygame
+  # Pygame
     - To install pygame:
        in your terminal run this command
        `pip install pygame`
