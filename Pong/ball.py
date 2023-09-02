@@ -1,4 +1,4 @@
-from pygame import draw, Rect
+
 from variables import *
 
 class Ball:
@@ -7,14 +7,14 @@ class Ball:
         self.x = (width / 2) - self.radius * .73
         self.y = (height // 2) - self.radius / 2
         
-        self.ball = Rect(self.x, self.y, self.radius, self.radius)
+        self.ball = pygame.Rect(self.x, self.y, self.radius, self.radius)
         
         # Make it go toward a random direction each time the game is initialized
         self.direction_x = random.choice((-1, 1))
         self.direction_y = random.choice((-1, 1))    
     
     def draw_ball(self):
-      draw.rect(screen, WHITE, self.ball, border_radius=self.radius)
+      pygame.draw.rect(screen, WHITE, self.ball, border_radius=self.radius)
       
     def move(self):
         # Keep the ball within the screen
@@ -28,7 +28,7 @@ class Ball:
         self.ball.x += speed * self.direction_x
         self.ball.y += speed * self.direction_y
     
-    def detect_collision(self, *bodies:Rect): # The * beside the bodies allows me to recieve as a parameter an unlimited number of rectangles(player or opponent in our case)
+    def detect_collision(self, *bodies): # The * beside the bodies allows me to recieve as a parameter an unlimited number of rectangles(player or opponent in our case)
         for body in bodies:
             if self.ball.colliderect(body):
                 self.direction_x *= -1
@@ -37,5 +37,3 @@ class Ball:
     def reset(self):
         self.ball.x = self.x
         self.ball.y = self.y
-        
-        self.direction_x = self.direction_y = 0

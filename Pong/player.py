@@ -20,5 +20,3 @@ class Player:
             self.player.y = (height - self.height)
         else:
             self.player.y += speed * direction
-
-        print(direction)

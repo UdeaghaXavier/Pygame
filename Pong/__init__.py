@@ -51,6 +51,7 @@ class Pong:
             looks.draw_center_line() 
             player.draw_player()
             opponent.draw_opponent()
+            opponent.follow(self.ball)
             player.move(self.direction)
             ball.draw_ball()
             ball.move()
