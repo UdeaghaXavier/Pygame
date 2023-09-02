@@ -8,3 +8,5 @@
     - This is a brick breaker game I made with python using the pygame module
 
     - The file that manages all other files is the `__init__.py` file
+    - The file that manages all the global variables is the `globals.py` file
+    
