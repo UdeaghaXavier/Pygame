@@ -6,6 +6,7 @@ class Player:
         self.width: int = 20
         self.x = width - (self.width * 2)
         self.y = height // 2 -  self.height // 2
+        self.speed = speed
         
         self.player = pygame.Rect(self.x, self.y, self.width, self.height)
         
@@ -19,4 +20,4 @@ class Player:
         elif self.player.y > (height - self.height):
             self.player.y = (height - self.height)
         else:
-            self.player.y += speed * direction
+            self.player.y += self.speed * direction

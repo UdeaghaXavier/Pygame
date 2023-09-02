@@ -6,6 +6,7 @@ class Opponent:
         self.width: int = 20
         self.x = self.width * 2
         self.y = height // 2 -  self.height // 2
+        self.speed = speed
         
         self.direction = 0
         self.opponent = pygame.Rect(self.x, self.y, self.width, self.height)
@@ -20,7 +21,9 @@ class Opponent:
             self.opponent.y = height - self.height
         
     def follow(self, ball):
-    
+        # Without this the opponent will be too fast and will never lose
+        drag = (self.speed - 7) / 2
+        
         if ball.x < width / 2:
             if self.opponent.top > ball.top:
                 self.direction = -1
@@ -29,6 +32,7 @@ class Opponent:
         else:
             self.direction = 0
             
-        self.opponent.y += speed * self.direction
+        self.opponent.y += (self.speed - drag)* self.direction
         self.stay_within_screen()
+        print(self.speed)
         

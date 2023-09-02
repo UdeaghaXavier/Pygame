@@ -6,6 +6,7 @@ class Ball:
         self.radius = 32
         self.x = (width / 2) - self.radius * .73
         self.y = (height // 2) - self.radius / 2
+        self.speed = speed
         
         self.ball = pygame.Rect(self.x, self.y, self.radius, self.radius)
         
@@ -25,8 +26,8 @@ class Ball:
         if self.ball.x < 0 or self.ball.x > width:
             self.reset()
         
-        self.ball.x += speed * self.direction_x
-        self.ball.y += speed * self.direction_y
+        self.ball.x += self.speed * self.direction_x
+        self.ball.y += self.speed * self.direction_y
     
     def detect_collision(self, *bodies): # The * beside the bodies allows me to recieve as a parameter an unlimited number of rectangles(player or opponent in our case)
         for body in bodies:
