@@ -84,7 +84,6 @@ class Pong:
             self.secs = [0]
 
     def loop(self):
-        global vel
         while self.running:
             self.handle_input_events()
             if not self.paused:
