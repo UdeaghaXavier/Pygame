@@ -14,7 +14,7 @@ ball = Ball()
 
 UP = (pygame.K_UP, pygame.K_w)
 DOWN = (pygame.K_DOWN, pygame.K_s)
-PLAY = (pygame.K_SPACE)
+PLAY = (pygame.K_SPACE,)
 
 def adjust_speed(vel):
     player.speed = vel
@@ -70,15 +70,16 @@ class Pong:
         opponent.follow(self.ball)
 
         ball.draw_ball()
+        ball.detect_collision(self.player, self.opponent)
         ball.move()
         self.reset_ball()
-        
-        ball.detect_collision(self.player, self.opponent)
     
     def reset_ball(self):
-        if self.ball.x < 0 or self.ball.x > width:
+        if self.ball.x < 0 or self.ball.x > width or self.ball.center == self.opponent.center:
             ball.ball.x = ball.x
             ball.ball.y = ball.y
+            ball.direction_x = random.choice((1, -1))
+            ball.direction_y = random.choice((1, -1))
             self.starting_time = time.time()
             self.speed = default_speed
             self.secs = [0]

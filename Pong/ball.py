@@ -31,4 +31,4 @@ class Ball:
         for body in bodies:
             if self.ball.colliderect(body):
                 self.direction_x *= -1
-                return
+                break

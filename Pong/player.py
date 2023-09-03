@@ -19,5 +19,4 @@ class Player:
             self.player.y = 0
         elif self.player.y > (height - self.height):
             self.player.y = (height - self.height)
-        else:
-            self.player.y += self.speed * direction
+        self.player.y += self.speed * direction
