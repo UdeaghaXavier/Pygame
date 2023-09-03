@@ -14,7 +14,7 @@ ball = Ball()
 
 UP = (pygame.K_UP, pygame.K_w)
 DOWN = (pygame.K_DOWN, pygame.K_s)
-PLAY = pygame.K_SPACE
+PLAY = (pygame.K_SPACE)
 
 def adjust_speed(vel):
     player.speed = vel
@@ -46,7 +46,7 @@ class Pong:
                 if event.key in DOWN:
                     self.direction += 1
                 # Paused the game when the space bar is pressed
-                if event.key == pygame.K_SPACE:
+                if event.key in PLAY:
                     self.paused = not self.paused # This will return False if it's True and vise-versa in short pausing and unpausing it each time
 
             if event.type == pygame.KEYUP:
