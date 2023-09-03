@@ -6,7 +6,7 @@ class Ball:
         self.radius = 32
         self.x = (width / 2) - self.radius * .73
         self.y = (height // 2) - self.radius / 2
-        self.speed = speed
+        self.speed = default_speed
         
         self.ball = pygame.Rect(self.x, self.y, self.radius, self.radius)
         
@@ -23,8 +23,6 @@ class Ball:
             self.direction_y *= -1
         if self.ball.y > (height - self.radius):
             self.direction_y *= -1
-        if self.ball.x < 0 or self.ball.x > width:
-            self.reset()
         
         self.ball.x += self.speed * self.direction_x
         self.ball.y += self.speed * self.direction_y
@@ -34,7 +32,3 @@ class Ball:
             if self.ball.colliderect(body):
                 self.direction_x *= -1
                 return
-    
-    def reset(self):
-        self.ball.x = self.x
-        self.ball.y = self.y

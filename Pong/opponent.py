@@ -6,7 +6,7 @@ class Opponent:
         self.width: int = 20
         self.x = self.width * 2
         self.y = height // 2 -  self.height // 2
-        self.speed = speed
+        self.speed = default_speed
         
         self.direction = 0
         self.opponent = pygame.Rect(self.x, self.y, self.width, self.height)
@@ -34,5 +34,5 @@ class Opponent:
             
         self.opponent.y += (self.speed - drag)* self.direction
         self.stay_within_screen()
-        print(self.speed)
+
         

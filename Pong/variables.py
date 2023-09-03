@@ -1,5 +1,6 @@
 import pygame
 import random
+import time
 
 # Colours
 BLACK = (0, 0, 0)
@@ -15,4 +16,4 @@ FPS: int = 60
 size = (width , height) = 1200, 600
 screen = pygame.display.set_mode(size)
 
-speed = 7
+default_speed = 7
