@@ -1,4 +1,4 @@
-from variables import *
+from Scripts.variables import *
 
 class Player:
     def __init__(self):
@@ -11,7 +11,7 @@ class Player:
         self.player = pygame.Rect(self.x, self.y, self.width, self.height)
         
     def draw_player(self):
-        pygame.draw.rect(screen, WHITE, self.player)
+        pygame.draw.rect(screen, board_color, self.player)
         
     def move(self, direction:int):
         # Make sure the player-board is always within the screen
