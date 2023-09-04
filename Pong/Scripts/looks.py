@@ -1,5 +1,6 @@
 from Scripts.variables import *
 
+
 class Looks:
     def __init__(self):
         # Line
@@ -10,9 +11,9 @@ class Looks:
 
         # Pause
         self.pause_img = pygame.image.load('Assets/Images/pause.png')
-        self.pause_img_x = width // 2 - (40 / 2) # The pause image has a dimension of 48x48
+        self.pause_img_x = width // 2 - (40 / 2)  # The pause image has a dimension of 48x48
         self.pause_img_y = height // 2 - (48 / 2)
-        
+
         # Font for texts
         self.font_size = 48
         self.font = pygame.font.SysFont('Courier new', self.font_size)
@@ -36,10 +37,9 @@ class Looks:
 
     def display_HUD(self):
         player_score = self.font.render(str(self.player_score), True, self.font_colour)
-        opponent_score =  self.font.render(str(self.opponent_score), True, self.font_colour)
-        multiplier = self.font.render("X"+str(self.multiplier), True, self.font_colour)
+        opponent_score = self.font.render(str(self.opponent_score), True, self.font_colour)
+        multiplier = self.font.render("X" + str(self.multiplier), True, self.font_colour)
 
         screen.blit(player_score, self.player_score_pos)
         screen.blit(opponent_score, self.opponent_score_pos)
         screen.blit(multiplier, self.multiplier_pos)
-

@@ -36,7 +36,8 @@ class Ball:
 
     def detect_collision(
         self, *bodies
-    ):  # The * beside the bodies allows me to recieve as a parameter an unlimited number of rectangles(player or opponent in our case)
+    ):  # The * beside the bodies allows me to receive as a parameter an unlimited number of rectangles, player or
+        # opponent, in our case
         for body in bodies:
             if self.ball.colliderect(body):
                 self.direction_x *= -1
