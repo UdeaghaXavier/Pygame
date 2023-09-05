@@ -2,8 +2,13 @@ import tkinter as tk
 
 screen = tk.Tk()
 
+
 class UI:
-    def display_title(self):
+    def __init__(self):
+        self.main = None
+
+    @staticmethod
+    def display_title():
         tk.Label(
             screen,
             text="Pong",
@@ -13,7 +18,7 @@ class UI:
             font="Courier 50 bold",
         ).pack()
 
-    def create_Interface(self):
+    def create_interface(self):
         self.main = tk.Frame(screen, borderwidth=5)
 
         texts = (
@@ -35,7 +40,8 @@ class UI:
 
         return entries
 
-    def create_start_button(self, func):
+    @staticmethod
+    def create_start_button(func):
         button = tk.Button(
             screen,
             text="Start",
@@ -64,10 +70,13 @@ class UI:
 
         return frame, entry, label
 
-    def display_hint(self):
+    @staticmethod
+    def display_hint():
         tk.Label(
             screen,
-            text="In the spaces provides input the colour in a RGB format but with spaces seperating the colour values e.g 0 0 0, that is black. NOTE: If left blank or the colour format used is wrong it'll be set to the default color",
+            text="In the spaces provides input the colour in a RGB format but with spaces separating the colour "
+            "values e.g 0 0 0, that is black. NOTE: If left blank or the colour format used is wrong it'll be "
+            "set to the default color",
             width=52,
             height=7,
             wraplength=525,
@@ -81,6 +90,7 @@ class UI:
 
 class Logic:
     def __init__(self):
+        self.entries = None
         self.UI = UI()
         self.colour = Colour()
 
@@ -103,14 +113,14 @@ class Logic:
                             case 1:
                                 self.colour.ball = tuple(entry_list)
                             case 2:
-                                self.colour.bgcolor = tuple(entry_list)
+                                self.colour.bg_color = tuple(entry_list)
 
         screen.quit()
 
     def display_manager(self):
         self.UI.display_title()
         self.UI.display_hint()
-        self.entries = self.UI.create_Interface()
+        self.entries = self.UI.create_interface()
         self.UI.create_start_button(self.start_btn)
 
     def main(self):
@@ -118,14 +128,15 @@ class Logic:
         screen.mainloop()
 
 
+def rgb_former(colour: tuple):
+    colour_list = []
+    for i in colour:
+        colour_list.append(int(i))
+    return tuple(colour_list)
+
+
 class Colour:
     def __init__(self):
         self.board = None
         self.ball = None
-        self.bgcolor = None
-
-    def rgb_former(self, colour:tuple):
-        colour_list = []
-        for i in colour:
-            colour_list.append(int(i))
-        return tuple(colour_list)
+        self.bg_color = None

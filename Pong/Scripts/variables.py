@@ -1,21 +1,22 @@
 import pygame
 import random
 import time
-from Scripts.UI import Logic
+from Scripts.UI.UI_Start import Logic, rgb_former
+from Scripts.UI.UI_End import Username_Input
 
 # Colours
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 RED = (255, 0, 0)
 
-print(__name__)
-if __name__ == "Scripts.variables":
-	logic = Logic()
-	logic.main()
+if __name__ == "Scripts.variables":  # If pong.py instantiated this module
+    logic = Logic()
+    logic.main()
 
-	board_color = logic.colour.rgb_former(logic.colour.board) if logic.colour.board else WHITE
-	ball_color = logic.colour.rgb_former(logic.colour.ball) if logic.colour.ball else WHITE
-	bg_color = logic.colour.rgb_former(logic.colour.bgcolor) if logic.colour.bgcolor else BLACK
+    board_color = rgb_former(logic.colour.board) if logic.colour.board else WHITE
+    ball_color = rgb_former(logic.colour.ball) if logic.colour.ball else WHITE
+    bg_color = rgb_former(logic.colour.bg_color) if logic.colour.bg_color else BLACK
+
 colours = (BLACK, WHITE, RED)
 
 CLock = pygame.time.Clock()

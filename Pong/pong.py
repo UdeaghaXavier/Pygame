@@ -2,11 +2,11 @@
 from Scripts.variables import *  # Contains the needed global variables
 from Scripts.looks import (
     Looks,
-)  # Everything that is'nt related to the ball, player and opponent is in here
+)  # Everything that isn't related to the ball, player and opponent is in here
 from Scripts.player import Player
 from Scripts.opponent import Opponent
 from Scripts.ball import Ball
-from Scripts.HighScoreManager import HighScoreManager
+from Scripts.UI.HighScoreManager import HighScoreManager
 
 pygame.init()
 
@@ -53,7 +53,7 @@ class Pong:
                 if event.key in PLAY:
                     self.paused = (
                         not self.paused
-                    )  # This will return False if it's True and vise-versa in short pausing and unpausing it each time
+                    )  # This will return False if it's True and vise-versa in short pausing and un-pausing it each time
 
             if event.type == pygame.KEYUP:
                 if event.key in UP:
@@ -115,7 +115,7 @@ class Pong:
             pygame.display.update()
 
     def increase_speed(self):
-        # Im increasing the speed based on how long you play
+        # I'm increasing the speed based on how long you play
         # But the speed will reset (back to 7) each time the ball exits the screen
         # Relationship: for every 5s the speed increases by 1
         current = time.time()
@@ -129,8 +129,19 @@ class Pong:
         # The multiplier works like this, for every 10 bounces it increases by 1
         if ball.bounces >= 10:
             looks.multiplier = round(ball.bounces / 10)
+            if looks.highest_multiplier:
+                if looks.multiplier > int(looks.highest_multiplier):
+                    looks.highest_multiplier = looks.multiplier
+            else:
+                looks.highest_multiplier = looks.multiplier
 
 
 pong = Pong()
 pong.loop()
 pygame.quit()
+
+UI_END = Username_Input()
+UI_END.player_score = str(looks.player_score)
+UI_END.Opponent_Score = str(looks.opponent_score)
+UI_END.Multiplier = str(looks.highest_multiplier)
+UI_END.prompt()

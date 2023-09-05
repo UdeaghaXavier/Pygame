@@ -26,6 +26,7 @@ class Looks:
         self.opponent_score_pos = (width - (width // 4 - self.font_size // 2), 0)
         self.multiplier = 1
         self.multiplier_pos = (width // 2 - self.font_size // 2, 0)
+        self.highest_multiplier = None
 
     def draw_center_line(self):
         start_pos = (self.line_x, self.line_y)
