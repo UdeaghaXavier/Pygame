@@ -22,11 +22,11 @@ class Ball:
     def move(self, direction_y=None):
         # Keep the ball within the screen
         if self.ball.y < 0:
-            self.direction_y *= -1
+            self.direction_y = 1
             self.bounces += 1
             AudioManager.bounce_off_wall.play()
         if self.ball.y > (height - self.radius):
-            self.direction_y *= -1
+            self.direction_y = -1
             self.bounces += 1
             AudioManager.bounce_off_wall.play()
         if direction_y:

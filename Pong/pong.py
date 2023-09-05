@@ -82,9 +82,9 @@ class Pong:
 
     def reset_ball(self):
         if (
-                self.ball.x < 0
-                or self.ball.x > width
-                or self.ball.center == self.opponent.center
+            self.ball.x < 0
+            or self.ball.x > width
+            or self.ball.center == self.opponent.center
         ):
             # Score related
             if self.ball.x > width:
