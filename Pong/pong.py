@@ -23,6 +23,7 @@ def adjust_speed(vel):
     opponent.speed = vel
     ball.speed = vel
 
+
 class Pong:
     def __init__(self):
         self.player = player.player
@@ -81,9 +82,9 @@ class Pong:
 
     def reset_ball(self):
         if (
-            self.ball.x < 0
-            or self.ball.x > width
-            or self.ball.center == self.opponent.center
+                self.ball.x < 0
+                or self.ball.x > width
+                or self.ball.center == self.opponent.center
         ):
             # Score related
             if self.ball.x > width:
@@ -103,7 +104,6 @@ class Pong:
             self.starting_time = time.time()
             self.speed = default_speed
             self.sec_passed = [0]
-
 
     def loop(self):
         while self.running:
@@ -130,7 +130,6 @@ class Pong:
             if self.speed not in self.sec_passed:
                 AudioManager.speed_increased.play()
                 self.sec_passed.append(self.speed)
-
 
         # The multiplier works like this, for every 10 bounces it increases by 1
         if ball.bounces >= 10:
