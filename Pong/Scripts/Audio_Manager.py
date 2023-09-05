@@ -2,7 +2,6 @@ from pygame import mixer, init
 
 mixer.init()
 
-
 class AudioManager:
     def __init__(self):
         self.bounce_off_wall = mixer.Sound('Assets/Audio/bounce_off_wall.wav')

@@ -1,6 +1,0 @@
-Xavier 90 900 6
-xara 37 0 15
-xim 20 24 8
-ximena 11 3 9
-ximena 19 3 15
-ximena 45 20 16
