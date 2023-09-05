@@ -34,5 +34,4 @@ class Opponent:
             self.direction = 0
 
         self.opponent.y += (self.speed - drag) * self.direction
-        print((self.speed - drag) * self.direction)
         self.stay_within_screen()

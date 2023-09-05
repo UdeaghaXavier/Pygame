@@ -28,14 +28,20 @@ class Looks:
         self.multiplier_pos = (width // 2 - self.font_size // 2, 0)
         self.highest_multiplier = None
 
+        self.is_paused = False
+
     def draw_center_line(self):
         start_pos = (self.line_x, self.line_y)
         end_pos = (self.line_x, self.line_height)
         pygame.draw.aaline(screen, board_color, start_pos, end_pos, 0)
+        self.is_paused = False
 
     def pause(self):
         screen.blit(self.pause_img, (self.pause_img_x, self.pause_img_y))
-        AudioManager.pause.play()
+        if self.is_paused == False:
+            AudioManager.pause.play()
+            self.is_paused = True
+        print(self.is_paused)
 
     def display_HUD(self):
         player_score = self.font.render(str(self.player_score), True, self.font_colour)

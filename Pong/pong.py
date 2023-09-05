@@ -104,6 +104,7 @@ class Pong:
             self.speed = default_speed
             self.sec_passed = [0]
 
+
     def loop(self):
         while self.running:
             self.handle_input_events()
