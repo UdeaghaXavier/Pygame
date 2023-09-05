@@ -6,9 +6,7 @@ from Scripts.looks import (
 from Scripts.player import Player
 from Scripts.opponent import Opponent
 from Scripts.ball import Ball
-from Scripts.UI.HighScoreManager import HighScoreManager
-
-pygame.init()
+from Scripts.UI.UI_End import Username_Input
 
 looks = Looks()
 player = Player()
@@ -25,7 +23,6 @@ def adjust_speed(vel):
     opponent.speed = vel
     ball.speed = vel
 
-
 class Pong:
     def __init__(self):
         self.player = player.player
@@ -38,6 +35,7 @@ class Pong:
 
         self.starting_time = time.time()
         self.paused = False
+        self.sec_passed = [0]
 
     def handle_input_events(self):
         for event in pygame.event.get():
@@ -90,8 +88,10 @@ class Pong:
             # Score related
             if self.ball.x > width:
                 looks.player_score += looks.multiplier
+                AudioManager.lose.play()
             elif self.ball.x < 0:
                 looks.opponent_score += looks.multiplier
+                AudioManager.score.play()
             looks.multiplier = 1
 
             # Ball related
@@ -102,6 +102,7 @@ class Pong:
             ball.bounces = 0
             self.starting_time = time.time()
             self.speed = default_speed
+            self.sec_passed = [0]
 
     def loop(self):
         while self.running:
@@ -125,6 +126,10 @@ class Pong:
 
         if time_passed >= 5:  # or it its equal to 0 (a multiple of 5)
             self.speed = round(time_passed / 5) + default_speed
+            if self.speed not in self.sec_passed:
+                AudioManager.speed_increased.play()
+                self.sec_passed.append(self.speed)
+
 
         # The multiplier works like this, for every 10 bounces it increases by 1
         if ball.bounces >= 10:

@@ -24,10 +24,11 @@ class Ball:
         if self.ball.y < 0:
             self.direction_y *= -1
             self.bounces += 1
+            AudioManager.bounce_off_wall.play()
         if self.ball.y > (height - self.radius):
             self.direction_y *= -1
             self.bounces += 1
-
+            AudioManager.bounce_off_wall.play()
         if direction_y:
             self.direction_y = direction_y
 
@@ -42,6 +43,7 @@ class Ball:
             if self.ball.colliderect(body):
                 self.direction_x *= -1
                 self.bounces += 1
+                AudioManager.hit_board.play()
                 return self.smart_bouncing(body)
 
     def smart_bouncing(self, body):

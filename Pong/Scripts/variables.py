@@ -2,7 +2,11 @@ import pygame
 import random
 import time
 from Scripts.UI.UI_Start import Logic, rgb_former
-from Scripts.UI.UI_End import Username_Input
+from Scripts.Audio_Manager import AudioManager
+
+pygame.init()
+
+AudioManager = AudioManager()
 
 # Colours
 BLACK = (0, 0, 0)

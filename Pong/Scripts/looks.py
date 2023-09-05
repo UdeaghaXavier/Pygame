@@ -35,6 +35,7 @@ class Looks:
 
     def pause(self):
         screen.blit(self.pause_img, (self.pause_img_x, self.pause_img_y))
+        AudioManager.pause.play()
 
     def display_HUD(self):
         player_score = self.font.render(str(self.player_score), True, self.font_colour)
